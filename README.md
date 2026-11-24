@@ -1,5 +1,7 @@
 # llm-gateway-guardrails
 
+[![CI](https://github.com/prakash6018/llm-gateway-guardrails/actions/workflows/ci.yml/badge.svg)](https://github.com/prakash6018/llm-gateway-guardrails/actions/workflows/ci.yml)
+
 A small multi-tenant gateway that sits between your apps and LLM providers. Every request is checked, priced and budgeted **before** any tokens are bought, and every call is metered per tenant.
 
 ```mermaid
