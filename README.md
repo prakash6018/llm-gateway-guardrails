@@ -73,10 +73,12 @@ npm test     # 17 tests: policy, PII, pricing, key sealing, budgets, concurrency
 ## Run the server
 
 ```bash
-export GATEWAY_MASTER_KEY=$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")
-node src/main.ts --add-tenant acme --budget 10        # prints the tenant's gateway key once
-node src/main.ts --port 8787
+cp .env.example .env                  # then set GATEWAY_MASTER_KEY (the file shows how to generate one)
+npm start -- --add-tenant acme --budget 10   # prints the tenant's gateway key once
+npm start -- --port 8787
 ```
+
+`.env` is git-ignored. Every setting is listed in [.env.example](.env.example).
 
 ```bash
 K=gw_...   # from --add-tenant
@@ -101,7 +103,7 @@ Set `GATEWAY_ADMIN_TOKEN` to turn on `/admin/*`. It is a separate secret from te
 
 Every request, allowed or refused, is written to an `events` table, so the dashboard can show what was blocked and why.
 
-Demo data: `node examples/seed-demo.ts demo.db` pushes about 2,300 requests from three fictional tenants through the real pipeline over a simulated 30 days. See [gateway-dashboard](https://github.com/prakash6018/gateway-dashboard) for the UI.
+Demo data: `npm run seed` pushes about 2,300 requests from three fictional tenants through the real pipeline over a simulated 30 days. See [gateway-dashboard](https://github.com/prakash6018/gateway-dashboard) for the UI.
 
 Any OpenAI-compatible endpoint works as a provider (set `OPENAI_BASE_URL` for Azure, Groq, a local vLLM/Ollama, …). Adding another provider means implementing one method: `complete({ model, messages, maxTokens, apiKey, signal })`.
 
