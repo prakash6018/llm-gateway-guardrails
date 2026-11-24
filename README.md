@@ -6,18 +6,18 @@ A small multi-tenant gateway that sits between your apps and LLM providers. Ever
 
 ```mermaid
 flowchart LR
-  App -- "Bearer gw_…" --> A[authenticate<br/>hashed key]
-  A --> P{policy}
-  P -- "model not allowed / too long /<br/>injection / blocked term" --> X[422]
-  P -- "PII redacted" --> C[predict cost<br/>worst case]
-  C --> B{reserve budget<br/>in a transaction}
-  B -- would overspend --> Y[402]
-  B --> K[decrypt tenant's<br/>own provider key]
-  K --> M[(LLM provider)]
-  M --> O[scan reply for PII]
-  O --> S[settle actual cost<br/>release the rest]
+  App -- "Bearer gw_…" --> A["authenticate<br/>hashed key"]
+  A --> P{"policy"}
+  P -- "model not allowed / too long /<br/>injection / blocked term" --> X["422"]
+  P -- "PII redacted" --> C["predict cost<br/>worst case"]
+  C --> B{"reserve budget<br/>in a transaction"}
+  B -- would overspend --> Y["402"]
+  B --> K["decrypt tenant's<br/>own provider key"]
+  K --> M[("LLM provider")]
+  M --> O["scan reply for PII"]
+  O --> S["settle actual cost<br/>release the rest"]
   S --> App
-  S -. stderr .-> L[audit log]
+  S -. stderr .-> L["audit log"]
 ```
 
 Zero runtime dependencies: Node 22's built-in `node:sqlite`, `node:crypto`, `node:http` and `fetch`.
