@@ -1,0 +1,16 @@
+{
+  "name": "llm-gateway-guardrails",
+  "version": "0.1.0",
+  "description": "A multi-tenant LLM gateway: policy checks, PII redaction, pre-call cost prediction, per-tenant budgets and encrypted bring-your-own-key storage.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Sai Prakash Reddy Chandupatla",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "start": "node src/main.ts",
+    "demo": "node examples/demo.ts",
+    "test": "node --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": { "typescript": "^5.6.0", "@types/node": "^22.0.0" }
+}
