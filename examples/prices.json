@@ -1,0 +1,6 @@
+{
+  "_note": "Illustrative prices in USD per million tokens. Replace with your providers' current published prices.",
+  "small-model":  { "provider": "mock", "inputPerMTok": 0.25, "outputPerMTok": 1.25, "contextWindow": 128000 },
+  "large-model":  { "provider": "mock", "inputPerMTok": 3.00, "outputPerMTok": 15.00, "contextWindow": 200000 },
+  "gpt-4o-mini":  { "provider": "openai", "inputPerMTok": 0.15, "outputPerMTok": 0.60, "contextWindow": 128000 }
+}
